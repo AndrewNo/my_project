@@ -1,0 +1,17 @@
+<div class="container shop">
+    <div class="category">
+        <ul>
+            <li><a href="/shop/">Все товары магазина</a></li>
+            <?php foreach ($data['categories'] as $category) { ?>
+                <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="one-product">
+        <h1><?= $data['product']['name'] ?></h1>
+        <img src="/uploads/<?= $data['product']['id']?>/main.jpg" alt="">
+        <p><?= $data['product']['description'] ?></p>
+
+        <button class="btn btn-success">Заказать</button>
+    </div>
+</div>

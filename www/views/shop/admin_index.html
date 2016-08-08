@@ -1,0 +1,24 @@
+<div class="container edit">
+  <h3>Товары на сайте:</h3>
+  <table class="table-stripped" >
+    <?php foreach ($data['products'] as $product) { ?>
+      <tr>
+        <td><b><?= $product['name'] ?></b></td>
+        <td><img src="/uploads/<?= $product['id']?>/main.jpg" alt="" style="width: 20%;"></td>
+        <td align="right">
+          <a href="/admin/shop/edit/<?= $product['id'] ?>">
+            <button class="btn_edit">Редактировать</button>
+          </a>
+          <a href="/admin/shop/delete/<?= $product['id'] ?>" onclick="return confirmDelete();">
+            <button class="btn_delete">Удалить</button>
+          </a>
+        </td>
+      </tr>
+    <?php } ?>
+  </table>
+
+
+  <a href="/admin/shop/add/">
+    <button class="btn_add">Добавить товар</button>
+  </a>
+</div>

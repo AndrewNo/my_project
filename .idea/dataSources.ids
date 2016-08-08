@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - jewelry@localhost" uuid="d55ff3fe-9cd7-4830-93b6-19f2dcc28198">
+    <database-info product="MySQL" version="5.5.5-10.1.13-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="jewelry">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="books"/>
+      <schema id="3" name="information_schema"/>
+      <schema id="4" name="local_shop"/>
+      <schema id="5" name="mvc"/>
+      <schema id="6" name="mysql"/>
+      <schema id="7" name="performance_schema"/>
+      <schema id="8" name="php-site"/>
+      <schema id="9" name="phpmyadmin"/>
+      <schema id="10" name="shop"/>
+      <schema id="11" name="sony"/>
+      <schema id="12" name="test"/>
+      <schema id="13" name="test1"/>
+      <schema id="14" name="test2"/>
+      <schema id="15" name="test3"/>
+    </database-model>
+  </data-source>
+</component>

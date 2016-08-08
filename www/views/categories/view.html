@@ -1,0 +1,23 @@
+<div class="container shop">
+    <div class="category">
+        <ul>
+            <li><a href="/shop/">Все товары магазина</a></li>
+            <?php foreach ($data['categories'] as $category) { ?>
+                <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <p style="text-align: center; font-size: 24px; margin-bottom: 40px;">Коллекция <?=$data['category']['name']?></p>
+    <?php foreach ($data['products'] as $product) { ?>
+        <div class="products">
+            <a href="/shop/view/<?= $product['id'] ?>"><img
+                    src="/uploads/<?= $product['id'] ?>/main.jpg"
+                    alt=""></a>
+            <h1><?= $product['name'] ?></h1>
+            <button>Заказать</button>
+            <?php if ($product['is_new']) { ?>
+                <img src="/img/new.png" class="new" alt="">
+            <?php } ?>
+        </div>
+    <?php } ?>
+</div>

@@ -1,0 +1,36 @@
+<div class="container shop">
+    <div class="category">
+        <ul>
+            <?php foreach ($data['categories'] as $category) { ?>
+                <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <?php foreach ($data['products'] as $product) { ?>
+        <div class="products">
+            <a href="/shop/view/<?= $product['id'] ?>" id="item"><img
+                    src="/uploads/<?= $product['id'] ?>/main.jpg"
+                    alt="" ></a>
+            <h1><?= $product['name'] ?></h1>
+            <button>Заказать</button>
+            <?php if ($product['is_new']) { ?>
+                <img src="/img/new.png" class="new" alt="">
+            <?php } ?>
+        </div>
+    <?php } ?>
+
+    <div id="results"></div>
+
+    <script>
+        var href = $("#item").attr("href");
+        $.ajax({
+            type: 'POST',
+            url: '/shop/index/',
+            data: 'href',
+            success: function(data){
+                $('.results').html(data);
+            }
+        });
+
+    </script>
+<?php //todo сделать так что бы файлы тянуло с папки аплоад и с названия категории и открывало по ссылке /view/alias_cat/id_prod

@@ -1,0 +1,13 @@
+
+<?php foreach ($data['pages'] as $page) { ?>
+
+    <div class="container pages">
+        <h1><?= $page['title'] ?></h1>
+        <p><?= $page['content'] ?></p>
+        <a href="<?= $page['alias'] ?>"><?= $page['title'] ?></a>
+    </div>
+<?php }
+
+//todo скорей всего надо делать и верстать статично, правда меняться не будет автоматом
+
+?>
