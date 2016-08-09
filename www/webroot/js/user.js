@@ -1,15 +1,17 @@
-$('#item').bind('click', function () {
-    var id_item = $('#item').data("id-item");
-    $.ajax(
-        {
-            url: "/shop/view/index.html",
-            type: "GET",
-            data: ({id: id_item}),
-            dataType: "html",
+/*document.ready(function () {
+    $('#item').bind("click", function () {
+       var href = $("#item").attr("href");
+        $.ajax(
+            {
+                url: "/shop/view/index.html",
+                type: "POST",
+                data: href,
+                dataType: "html"
 
-        }).done(function (html) {
+            }).done(function (html) {
 
-        $("#results").append(html);
+            $("#results").append(html);
+        });
     });
-    console.log(id_item);
-});
+});*/
+

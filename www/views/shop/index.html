@@ -8,7 +8,7 @@
     </div>
     <?php foreach ($data['products'] as $product) { ?>
         <div class="products">
-            <a href="/shop/view/<?= $product['id'] ?>" id="item"><img
+            <a href="/shop/view/<?= $product['id']?>"><img
                     src="/uploads/<?= $product['id'] ?>/main.jpg"
                     alt="" ></a>
             <h1><?= $product['name'] ?></h1>
@@ -21,16 +21,5 @@
 
     <div id="results"></div>
 
-    <script>
-        var href = $("#item").attr("href");
-        $.ajax({
-            type: 'POST',
-            url: '/shop/index/',
-            data: 'href',
-            success: function(data){
-                $('.results').html(data);
-            }
-        });
 
-    </script>
 <?php //todo сделать так что бы файлы тянуло с папки аплоад и с названия категории и открывало по ссылке /view/alias_cat/id_prod

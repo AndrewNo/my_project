@@ -42,4 +42,8 @@ class DB
     {
         return mysqli_escape_string($this->connection, $str);
     }
+
+    public function insertId(){
+        return mysqli_insert_id($this->connection);
+    }
 }

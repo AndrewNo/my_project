@@ -134,6 +134,7 @@ table.table-stripped a {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: 600;
+    display: block;
 }
 
 #is_published {
@@ -323,6 +324,19 @@ table.table-stripped a {
     border-radius: 12px;
     padding: 5px;
     background-color: orange;
+}
+
+input#availability,
+input#status,
+input#is_new {
+    width: 50px;
+    display: inline-block;
+
+}
+
+p#availability {
+    display: inline;
+
 }
 
 /*style for footer*/
