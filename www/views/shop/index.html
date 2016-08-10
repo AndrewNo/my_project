@@ -1,25 +1,57 @@
-<div class="container shop">
+<div class="category">
+    <ul>
+        <?php foreach ($data['categories'] as $category) { ?>
+            <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
+        <?php } ?>
+    </ul>
+</div>
+
+<div class="main">
+    <ul id="og-grid" class="og-grid">
+        <?php foreach ($data['products'] as $product) { ?>
+            <li>
+                <a href="http://cargocollective.com/jaimemartinez/"
+                   data-largesrc="/uploads/<?= $product['id'] ?>/main.jpg" data-title="<?= $product['name'] ?>"
+                   data-description="<?= $product['description'] ?>">
+                    <img src="/uploads/<?= $product['id'] ?>/thumbnails/main.jpg" alt="img01"/>
+                </a>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/grid.js"></script>
+<script>
+    $(function () {
+        Grid.init();
+    });
+</script>
+
+
+<!--<div class="container shop">
     <div class="category">
         <ul>
-            <?php foreach ($data['categories'] as $category) { ?>
-                <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
-            <?php } ?>
+            <?php /*foreach ($data['categories'] as $category) { */ ?>
+                <li><a href="/categories/view/<? /*= $category['alias'] */ ?>/"><? /*= $category['name'] */ ?></a></li>
+            <?php /*} */ ?>
         </ul>
     </div>
-    <?php foreach ($data['products'] as $product) { ?>
+    <?php /*foreach ($data['products'] as $product) { */ ?>
         <div class="products">
-            <a href="/shop/view/<?= $product['id']?>"><img
-                    src="/uploads/<?= $product['id'] ?>/main.jpg"
+            <a href="/shop/view/<? /*= $product['id']*/ ?>"><img
+                    src="/uploads/<? /*= $product['id'] */ ?>/main.jpg"
                     alt="" ></a>
-            <h1><?= $product['name'] ?></h1>
+            <h1><? /*= $product['name'] */ ?></h1>
             <button>Заказать</button>
-            <?php if ($product['is_new']) { ?>
+            <?php /*if ($product['is_new']) { */ ?>
                 <img src="/img/new.png" class="new" alt="">
-            <?php } ?>
+            <?php /*} */ ?>
         </div>
-    <?php } ?>
+    <?php /*} */ ?>
 
     <div id="results"></div>
 
 
-<?php //todo сделать так что бы файлы тянуло с папки аплоад и с названия категории и открывало по ссылке /view/alias_cat/id_prod
+--><?php /*//todo сделать так что бы файлы тянуло с папки аплоад и с названия категории и открывало по ссылке /view/alias_cat/id_prod
+*/

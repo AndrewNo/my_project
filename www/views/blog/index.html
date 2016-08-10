@@ -2,9 +2,6 @@
     <div class="container pages">
         <h1><?= $post['title'] ?></h1>
         <p><?= $post['dt'] ?></p>
-        <?php if ($post['img']) {?>
-            <img src="/uploads/<?=$post['img']?>.jpg" alt="">
-        <?php }?>
         <p><?= $post['short_content'] ?></p>
         <a href="/blog/view/<?= $post['id'] ?>">Читать</a>
     </div>

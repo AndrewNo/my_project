@@ -37,7 +37,47 @@ class BlogController extends Controller
             } else {
                 Session::setFlashMessage('Не удалось сохранить страницу');
             }
-            Router::redirect('/admin/home/');
+            Router::redirect('/admin/blog/');
         }
+    }
+
+    public function admin_edit()
+    {
+        if ($_POST) {
+            $id = isset($_POST['id']) ? $_POST['id'] : null;
+            $result = $this->model->save($_POST, $id);
+            if ($result) {
+                Session::setFlashMessage('Страница сохранена');
+            } else {
+                Session::setFlashMessage('Не удалось сохранить страницу');
+            }
+            Router::redirect('/admin/blog/');
+        }
+
+        if (isset($this->params[0])) {
+            $this->data['post'] = $this->model->getById($this->params[0]);
+        } else {
+            Session::setFlashMessage('Не правильный id страницы');
+            Router::redirect('/admin/blog/');
+        }
+
+    }
+
+    public function admin_delete()
+    {
+        if (isset($this->params[0])){
+            $result = $this->model->delete($this->params[0]);
+            if ($result) {
+                Session::setFlashMessage('Страница удалена');
+            } else {
+                Session::setFlashMessage('Не удалось удалить страницу');
+            }
+
+        }
+        Router::redirect('/admin/blog/');
+    }
+
+    public function admin_draft(){
+        $this->data['posts'] = $this->model->getDraftPosts();
     }
 }

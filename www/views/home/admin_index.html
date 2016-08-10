@@ -1,23 +1,47 @@
 <div class="container edit">
     <h3>Страницы сайта:</h3>
-    <table class="table-stripped" >
-        <?php foreach ($data['pages'] as $page) { ?>
-            <tr>
-                <td><b><?= $page['title'] ?></b></td>
-                <td align="right">
-                    <a href="/admin/home/edit/<?= $page['id'] ?>">
-                        <button class="btn_edit">Редактировать</button>
-                    </a>
-                    <a href="/admin/home/delete/<?= $page['id'] ?>" onclick="return confirmDelete();">
-                        <button class="btn_delete">Удалить</button>
-                    </a>
-                </td>
-            </tr>
-        <?php } ?>
+    <table class="table-stripped">
+
+        <tr>
+            <td><b>Блог</b></td>
+            <td align="right">
+                <a href="/admin/blog/">
+                    <button class="btn_edit">Перейти</button>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Галлерея</b></td>
+            <td align="right">
+                <a href="/admin/gallery/">
+                    <button class="btn_edit">Перейти</button>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Контакты</b></td>
+            <td align="right">
+                <a href="/admin/contacts/">
+                    <button class="btn_edit">Перейти</button>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Магазин</b></td>
+            <td align="right">
+                <a href="/admin/shop/">
+                    <button class="btn_edit">Перейти</button>
+                </a>
+
+            </td>
+        </tr>
+
     </table>
 
-
-    <a href="/admin/home/add/">
-        <button class="btn_add">Новая страница</button>
+    <a href="/admin/users/logout">
+        <button class="btn_add">Выйти из админки</button>
     </a>
 </div>

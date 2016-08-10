@@ -2,12 +2,15 @@
 
 class Blog_page extends Model
 {
-    public function getPosts($is_published = false)
+    public function getPosts()
     {
-        $sql = "select * from post";
-        if ($is_published) {
-            $sql .= " and is_published = 1 order by dt DESC";
-        }
+        $sql = "select * from post where `is_published` = 1 order by `dt` DESC";
+        return $this->db->query($sql);
+    }
+
+    public function getDraftPosts()
+    {
+        $sql = "select * from post where `is_published` = 0 order by `dt` DESC";
         return $this->db->query($sql);
     }
 
@@ -21,27 +24,27 @@ class Blog_page extends Model
 
     public function save($data, $id = null)
     {
-        if (!isset($data['alias']) || !isset($data['title']) || !isset($data['content'])) {
+        if (!isset($data['title']) || !isset($data['content'])) {
             return false;
         }
 
         $id = (int)$id;
-        $alias = $this->db->escape($data['alias']);
         $title = $this->db->escape($data['title']);
         $content = $this->db->escape($data['content']);
+        $short_content = substr($content, 0, 150);
         $is_published = isset($data['is_published']) ? 1 : 0;
 
         if (!$id) {
             $sql = "insert into post
-                    set alias = '{$alias}',
-                        title = '{$title}',
+                    set title = '{$title}',
+                        short_content = '{$short_content}',
                         content = '{$content}',
                         is_published = {$is_published}
             ";
         } else {
             $sql = "update post
-                    set alias = '{$alias}',
-                        title = '{$title}',
+                    set title = '{$title}',
+                        short_content = '{$short_content}',
                         content = '{$content}',
                         is_published = {$is_published}
                     where id = {$id}
@@ -51,4 +54,13 @@ class Blog_page extends Model
         return $this->db->query($sql);
 
     }
+
+    public function delete($id)
+    {
+        $id = (int)$id;
+        $sql = "delete from post where id = {$id}";
+        return $this->db->query($sql);
+    }
 }
+
+

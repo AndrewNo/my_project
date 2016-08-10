@@ -1,0 +1,6 @@
+<div class="container">
+    <?php foreach (glob("uploads/gallery/*.jpg") as $item) { ?>
+        <img src="/<?= $item ?>" alt="" style="width: 24%; vertical-align: middle;">
+    <?php } ?>
+</div>
+

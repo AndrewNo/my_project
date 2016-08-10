@@ -1,0 +1,24 @@
+<div class="container edit">
+  <h3>Страницы сайта:</h3>
+  <table class="table-stripped">
+    <?php foreach ($data['posts'] as $post) { ?>
+      <tr>
+        <td><b><?= $post['title'] ?></b></td>
+        <td align="right">
+          <a href="/admin/blog/edit/<?= $post['id'] ?>">
+            <button class="btn_edit">Редактировать</button>
+          </a>
+          <a href="/admin/blog/delete/<?= $post['id'] ?>" onclick="return confirmDelete();">
+            <button class="btn_delete">Удалить</button>
+          </a>
+        </td>
+      </tr>
+    <?php } ?>
+  </table>
+
+
+  <a href="/admin/blog/">
+    <button class="btn_add">Назад</button>
+  </a>
+
+</div>
