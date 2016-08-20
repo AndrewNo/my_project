@@ -70,4 +70,8 @@ class Shop_page extends Model
         $sql = "delete from product where id = {$id}";
         return $this->db->query($sql);
     }
+
+    public function nextId(){
+        return $this->db->insertId();
+    }
 }

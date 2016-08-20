@@ -1,0 +1,27 @@
+<div class="container shop">
+    <div class="category">
+        <ul>
+            <li><a href="/shop/">Все товары магазина</a></li>
+            <?php foreach ($data['categories'] as $category) { ?>
+                <li><a href="/categories/view/<?= $category['alias'] ?>/"><?= $category['name'] ?></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <p>Вы выбрали <?= $data['product']['name'] ?></p>
+    <form action="" method="post">
+        <input type="hidden" name="product_id" value="<?= $data['product']['id'] ?>">
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" name="name">
+        <label for="phone">Телефон</label>
+        <input type="text" id="phone" name="phone">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+        <label for="city">Город</label>
+        <input type="text" id="city" name="city">
+        <label for="message">Пожелания/Вопросы</label>
+        <textarea name="message" id="message"></textarea>
+        <button class="btn btn-success">Заказать</button>
+    </form>
+
+
+</div>

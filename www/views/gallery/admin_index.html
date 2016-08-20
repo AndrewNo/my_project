@@ -1,0 +1,11 @@
+<div class="container">
+  <form action="/admin/gallery/delete" method="post">
+  <?php foreach (glob("uploads/gallery/*.jpg") as $item) { ?>
+    <img src="/<?= $item ?>" alt="" style="width: 24%; vertical-align: middle;">
+    <input type="checkbox" name="delete_photo[]" value="<?= $item ?>">пометить на удаление
+  <?php } ?>
+  <button>Удалить выбранные фото</button>
+  </form>
+  <a href="/admin/gallery/add"><button>Добавить фото</button></a>
+</div>
+

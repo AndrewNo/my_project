@@ -28,7 +28,18 @@
             <input type="checkbox" id="is_new"
                    class="form-control" checked="checked" name="is_new">
         </div>
-
+        <div class="form-group">
+            <label for="main_photo">Главное фото</label>
+            <div class="no-photo"></div>
+            <input type="file" id="main_photo"
+                   class="form-control" name="main_photo">
+        </div>
+        <div class="form-group">
+            <label for="add_photo">Дополнительные фото</label>
+            <div class="more_photos"></div>
+            Можно выбрать до 10 фото за раз
+            <input name='add_photo[]' id="add_photo" type='file' multiple='true' min='1' max='10' class="form-control"/>
+        </div>
 
 
 

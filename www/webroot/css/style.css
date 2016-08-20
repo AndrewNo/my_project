@@ -129,6 +129,22 @@ table.table-stripped a {
     padding: 10px;
 }
 
+.no-photo {
+    width: 250px;
+    height: 250px;
+    background-image: url('/img/background/no_photo.jpg');
+}
+
+.no-photo img {
+    width: 250px;
+}
+
+.more_photos {
+    width: 250px;
+    height: 250px;
+    background-image: url('/img/background/more_photo.jpg');
+}
+
 .container.edit label {
     margin-left: 20px;
     font-family: 'Lato', sans-serif;
@@ -350,4 +366,59 @@ p#availability {
 
     margin-top: 10px;
     padding: 10px;
+}
+
+/*SLIDER*/
+#slide-prev {
+    /* Any properties you need to stylize your Prev button */
+}
+
+#slide-next {
+    /* Any properties you need to stylize your Next button */
+}
+
+#slider {
+    /* Set the Slider's width, height and position to relative */
+    width: 900px;
+    height: 300px;
+    position: relative;
+    /*........*/
+}
+
+/* Every slide must be hidden by default */
+.slide {
+    display: none;
+}
+
+/*
+And only the slide with "cs-activeSlide" class must be visible!
+!Reserved Class name. Required class!
+*/
+.slide.activeSlide {
+    display: block;
+}
+
+/* Container with caption's text. Must be hidden */
+.slide-descriptions {
+    display: none;
+}
+
+/* Container with caption, must be hidden by default */
+.caption {
+    /* Style of container with Caption */
+}
+
+/* Container with Pagination buttons */
+.pagination {
+    /* Any properties you may need to stylize it */
+}
+
+.slider-pagination {
+    /* Any properties you may need to stylize single pagination button */
+}
+
+/* This is a required class for the "Active" pagination button. ! Reserved Class
+Name ! */
+.cs-active-pagination {
+    /* Different style for the Active pagination button */
 }

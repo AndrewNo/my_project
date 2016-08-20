@@ -22,7 +22,7 @@ class Category extends Model
     public function getProductsByCategoryAlias($alias)
     {
         $alias = $this->db->escape($alias);
-        $sql = "select * from product where category_alias = '{$alias}' limit 1";
+        $sql = "select * from product where category_alias = '{$alias}'";
         $result = $this->db->query($sql);
         return isset($result) ? $result : null;
     }
