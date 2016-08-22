@@ -1,0 +1,51 @@
+<div class="container messages">
+  <h3>Сообщения:</h3>
+  <table class="table-stripped">
+    <tr>
+      <td style="width: 5%; background-color: #bbbbbb;">#</td>
+      <td style="width: 10%; background-color: #bbbbbb;">Имя</td>
+      <td style="width: 25%; background-color: #bbbbbb;">E-mail</td>
+      <td style="width: 25%; background-color: #bbbbbb;">Телефон</td>
+      <td style="width: 25%; background-color: #bbbbbb;">Город</td>
+      <td style="width: 50%; background-color: #bbbbbb;">Сообщение</td>
+      <td style="width: 50%; background-color: #bbbbbb;">Дата</td>
+    </tr>
+    <?php foreach ($data['orders'] as $order) { ?>
+      <form action="" method="post">
+        <tr>
+          <td><input type="hidden" name="id" value="<?= $order['id'] ?>"></td>
+          <td style="width: 5%;"><?= $order['id'] ?></td>
+          <td style="width: 10%;"><?= $order['name'] ?></td>
+          <td style="width: 25%;"><?= $order['email'] ?></td>
+          <td style="width: 25%;"><?= $order['phone'] ?></td>
+          <td style="width: 25%;"><?= $order['city'] ?></td>
+          <td style="width: 50%;"><?= $order['message'] ?></td>
+          <td style="width: 50%;"><?= $order['dt'] ?></td>
+        </tr>
+        <tr>
+          <td>Информация о заказаном товаре:</td>
+        </tr>
+        <tr>
+          <td style="width: 5%;"><?= $order['product_id'] ?></td>
+          <td style="width: 10%;"><?= $order['product_name'] ?></td>
+        </tr>
+        <tr>
+          <td>Статус</td>
+        </tr>
+        <tr>
+          <?php if ($order['is_active'] == 2) {?>
+          <td style="width: 5%;"><?="В работе"; } ?></td>
+
+        </tr>
+        <td><button name="is_active" value="0">Выполнить</button></td>
+      </form>
+    <?php } ?>
+
+    <tr>
+
+    </tr>
+  </table>
+  <a href="/admin/order/">
+    <button class="btn_edit">Назад</button>
+  </a>
+</div>

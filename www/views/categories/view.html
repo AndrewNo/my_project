@@ -13,7 +13,7 @@
         <ul id="og-grid" class="og-grid">
             <?php foreach ($data['products'] as $product) { ?>
                 <li>
-                    <a href="/shop/"
+                    <a href="/order/get/<?= $product['id']?>"
                        data-largesrc="/uploads/<?= $product['id'] ?>/main.jpg" data-title="<?= $product['name'] ?>"
                        data-description="<?= $product['description'] ?>" data-price="Стоимость товара зависит от многих факторов">
                         <img src="/uploads/<?= $product['id'] ?>/thumbnails/main.jpg" alt="img01"/>

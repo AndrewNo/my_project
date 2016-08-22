@@ -32,4 +32,44 @@ class OrderController extends Controller
             Router::redirect('/shop/');
         }
     }
+
+    public function admin_index()
+    {
+        $this->data['orders'] = $this->model->getOrderList();
+
+        if ($_POST) {
+
+            $result = $this->model->done($_POST);
+
+            if ($result) {
+                Session::setFlashMessage('Ваш заказ принят');
+            } else {
+                Session::setFlashMessage('Не удалось принять заказ');
+            }
+            Router::redirect('/admin/order/');
+        }
+
+    }
+
+    public function admin_archive()
+    {
+        $this->data['orders'] = $this->model->getOrderArchiveList();
+    }
+
+    public function admin_inwork()
+    {
+        $this->data['orders'] = $this->model->getOrderWorkList();
+
+        if ($_POST) {
+
+            $result = $this->model->done($_POST);
+
+            if ($result) {
+                Session::setFlashMessage('Ваш заказ принят');
+            } else {
+                Session::setFlashMessage('Не удалось принять заказ');
+            }
+            Router::redirect('/admin/order/');
+        }
+    }
 }
