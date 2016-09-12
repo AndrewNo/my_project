@@ -2,25 +2,29 @@
 
 class Session
 {
-    protected static $flash_message;
 
-    /**
-     * @param mixed $flash_message
-     */
-    public static function setFlashMessage($flash_message)
-    {
-        self::$flash_message = $flash_message;
-    }
+    private static $key = 'flash';
 
-    public static function hasFlash()
-    {
-        return !is_null(self::$flash_message);
-    }
+    public static function flash( $key, $value=null ){
+        # Если значение не указано
+        if( is_null( $value ) ){
+            # Если такой ключ в сессии есть
+            if( isset( $_SESSION[self::$key][$key] ) ){
+                # Получаем значение
+                $value = $_SESSION[self::$key][$key];
 
-    public static function flash()
-    {
-        echo self::$flash_message;
-        self::$flash_message = null;
+                # Уничтожаем значение сессии
+                unset( $_SESSION[self::$key][$key] );
+
+                # Возвращаем значение
+                return $value;
+            }
+            # По умолчанию
+            return false;
+        }
+
+        # Записываем значение в сессию
+        $_SESSION[self::$key][$key] = $value;
     }
 
     public static function set($key, $value)

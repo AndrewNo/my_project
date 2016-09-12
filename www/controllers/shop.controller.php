@@ -45,11 +45,12 @@ class ShopController extends Controller
 
             if (!empty($_FILES['main_photo']['tmp_name'])) {
                 $types = array('image/gif', 'image/png', 'image/jpeg');
-                if ($_FILES['main_photo']['size'] > 2097152) {
-                    die ("Слишком большой размер файла. Допустимый размер до 2 Мб.");
-                }
+
                 if (!in_array($_FILES['main_photo']['type'], $types)) {
-                    die ("Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif");
+                    Session::flash('error', 'Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif');
+                    Router::redirect($_SERVER['HTTP_REFERER']);
+                    exit;
+
                 }
                 move_uploaded_file($_FILES['main_photo']['tmp_name'], 'uploads' . DS . $id . DS . 'main.jpg');
                 copy('uploads' . DS . $id . DS . 'main.jpg', 'uploads' . DS . $id . DS . 'thumbnails' . DS . 'main.jpg');
@@ -63,18 +64,15 @@ class ShopController extends Controller
 
             if (!empty($_FILES['add_photo']['tmp_name'])) {
 
-                foreach ($_FILES['add_photo']['size'] as $size) {
-                    if ($size > 2097152) {
-                        die ("Слишком большой размер файла. Допустимый размер до 2 Мб.");
-                    }
-                }
 
                 $types = array('image/gif', 'image/png', 'image/jpeg');
 
                 foreach ($_FILES['add_photo']['type'] as $type) {
 
                     if (!in_array($type, $types)) {
-                        die ("Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif");
+                        Session::flash('error', 'Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif');
+                        Router::redirect($_SERVER['HTTP_REFERER']);
+                        exit;
                     }
                 }
 
@@ -86,9 +84,11 @@ class ShopController extends Controller
             }
 
             if ($result) {
-                Session::setFlashMessage('Страница сохранена');
+                Session::flash('success', 'Данные сохранены!');
+                Router::redirect('/admin/shop/');
+                exit;
             } else {
-                Session::setFlashMessage('Не удалось сохранить страницу');
+                Session::flash('error', 'Не удалось сохранить данные!');
             }
             Router::redirect('/admin/shop/');
         }
@@ -100,6 +100,7 @@ class ShopController extends Controller
 
     public function admin_edit()
     {
+
         if (isset($_POST['delete_photo'])) {
             foreach ($_POST['delete_photo'] as $photo) {
                 unlink($photo);
@@ -113,11 +114,11 @@ class ShopController extends Controller
 
             if (!empty($_FILES['main_photo']['tmp_name'])) {
                 $types = array('image/gif', 'image/png', 'image/jpeg');
-                if ($_FILES['main_photo']['size'] > 2097152) {
-                    die ("Слишком большой размер файла. Допустимый размер до 2 Мб.");
-                }
+
                 if (!in_array($_FILES['main_photo']['type'], $types)) {
-                    die ("Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif");
+                    Session::flash('error', 'Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif');
+                    Router::redirect($_SERVER['HTTP_REFERER']);
+                    exit;
                 }
                 move_uploaded_file($_FILES['main_photo']['tmp_name'], 'uploads' . DS . $id . DS . 'main.jpg');
                 copy('uploads' . DS . $id . DS . 'main.jpg', 'uploads' . DS . $id . DS . 'thumbnails' . DS . 'main.jpg');
@@ -128,20 +129,20 @@ class ShopController extends Controller
                 $image->save('uploads' . DS . $id . DS . 'thumbnails' . DS . 'main.jpg');
             }
 
-            if (count($_FILES['add_photo']['tmp_name'])) {
+            if (!empty($_FILES['add_photo']['tmp_name'][0])) {
 
-                foreach ($_FILES['add_photo']['size'] as $size) {
-                    if ($size > 2097152) {
-                        die ("Слишком большой размер файла. Допустимый размер до 2 Мб.");
-                    }
-                }
+
 
                 $types = array('image/gif', 'image/png', 'image/jpeg');
 
                 foreach ($_FILES['add_photo']['type'] as $type) {
 
                     if (!in_array($type, $types)) {
-                        die ("Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif");
+
+                        Session::flash('error', 'Формат файла не поддерживается. Допустимые форматы: .jpg, .png, .gif');
+                        Router::redirect($_SERVER['HTTP_REFERER']);
+                        exit;
+
                     }
                 }
 
@@ -157,9 +158,11 @@ class ShopController extends Controller
             }
 
             if ($result) {
-                Session::setFlashMessage('Страница сохранена');
+                Session::flash('success', 'Данные сохранены!');
+                Router::redirect('/admin/shop/');
+                exit;
             } else {
-                Session::setFlashMessage('Не удалось сохранить страницу');
+                Session::flash('error', 'Не удалось сохранить данные!');
             }
             Router::redirect('/admin/shop/');
         }
@@ -167,8 +170,10 @@ class ShopController extends Controller
         if (isset($this->params[0])) {
             $this->data['product'] = $this->model->getById($this->params[0]);
         } else {
-            Session::setFlashMessage('Не правильный id страницы');
-            Router::redirect('/admin/shop/');
+            Session::flash('error', 'Не правильный id страницы');
+            header("location: /admin/shop/");
+            exit;
+
         }
 
         $this->data['categories'] = $this->model->getCategoryList();
@@ -180,9 +185,10 @@ class ShopController extends Controller
         if (isset($this->params[0])) {
             $result = $this->model->delete($this->params[0]);
             if ($result) {
-                Session::setFlashMessage('Страница удалена');
+                Session::flash('success', 'Товар удален');
+
             } else {
-                Session::setFlashMessage('Не удалось удалить страницу');
+                Session::flash('error', 'Не удалось удалить товар');
             }
 
         }

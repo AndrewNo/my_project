@@ -40,9 +40,18 @@
 </header>
 
 <article>
-    <?php if (Session::hasFlash()) { ?>
+
+    <?php if (isset($_SESSION['flash']['success'])) { ?>
         <div class="alert" role="alert">
-            <?= Session::flash(); ?>
+
+            <?= Session::flash('success'); ?>
+        </div>
+    <?php } ?>
+
+    <?php if (isset($_SESSION['flash']['error'])) { ?>
+        <div class="alert" role="alert">
+
+            <?= Session::flash('error'); ?>
         </div>
     <?php } ?>
     <p><?= $data['content'] ?></p>

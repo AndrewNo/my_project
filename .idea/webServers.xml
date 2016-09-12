@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3e0425f2-995d-4aed-92c9-c433a1f63732" name="jew" url="http://ftp.dkjewelry.com.ua">
+        <fileTransfer host="ftp.dkjewelry.com.ua" port="21" rootFolder="/www/dkjewelry.com.ua" username="dkjew46">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
